@@ -1,0 +1,213 @@
+﻿@model VLO.Models.OrdenesViewModel
+@{
+    ViewBag.Title = "Menu";
+    int Item = 1;
+    var IdOrden = "0";
+    try
+    {
+        IdOrden = Convert.ToString(Model.DetallePedido.FirstOrDefault().IdDetalle);
+    }
+    catch
+    {
+        IdOrden = "0";
+    }
+}
+
+<h2>Orden Mesa @ViewBag.mesa</h2>
+
+<div class="col-md-12">
+    <div class="col-md-6">
+        <form action="/Ordenes/AddOrden" method="post">
+            <div class="form-group">
+                <label>Cliente</label>
+                <input type="text" name="cliente" value="@ViewBag.cliente" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label>Cantidad de Personas</label>
+                <input type="number" class="form-control" min="1" max="10" name="numpersonas" value="@ViewBag.cantidad" required />
+            </div>
+            <input type="hidden" name="mesa" value="@ViewBag.mesa" />
+
+            <table class="table table-bordered table-responsive" style="background-color:#FFF">
+                <thead>
+                    <tr>
+                        <td>N°</td>
+                        <td>Prod.</td>
+                        <td>Nota</td>
+                        <td>Térm.</td>
+                        <td>Cant</td>
+                        <td>Precio</td>
+                        <td>Tot.</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody id="detalle">
+                    @foreach (var item in Model.DetallePedido)
+                    {
+                        double total = item.cantidad * item.Menu.Precio;
+                        <tr>
+                            <td scope="row">@Item</td>
+                            <td>
+                                @item.Menu.Nombre
+                                <br />
+                                @if (item.Estado == 1)
+                                {
+                                    <span class="badge badge-danger">
+                                        En Cocina
+                                    </span>
+                                }
+                                else if (item.Estado == 2)
+                                {
+                                    <span class="badge badge-success">
+                                        Terminado
+                                    </span>
+                                }
+                                else if (item.Estado == 3)
+                                {
+                                    <span class="badge badge-dark">
+                                        Pagado
+                                    </span>
+                                }
+                            </td>
+                            <td>@item.Comentarios</td>
+                            <td>@item.Termino</td>
+                            <td>@item.cantidad</td>
+                            <td class="color-primary">$ @item.Menu.Precio</td>
+                            <td class="color-primary">$ @total</td>
+                        </tr>
+                        Item = Item + 1;
+                    }
+                </tbody>
+            </table>
+            <input type="hidden" name="idPedido" value="@ViewBag.pedido" />
+            <a href="@Url.Action("Index","Ordenes")" class="btn btn-danger btn-rounded">Cancelar</a>
+            <button type="submit" class="btn btn-green btn-rounded">Enviar a cocina</button>
+
+        </form>
+    </div>
+    <div class="col-md-6">
+        <h3 style="font-weight:bold">Menus</h3>
+        <label class="btn btn-default" onclick="Filter('.all')">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked=""> All
+        </label>
+        @foreach (var item in Model.TiposMenu)
+        {
+            <label class="btn btn-default" onclick="Filter('.tipo_@item.IdTipoMenu')">
+                <input type="radio" name="options" id="option1" autocomplete="off" checked=""> @item.Nombre
+            </label>
+        }
+            <div class="col-md-12" style="margin-top:10px;height:450px; overflow:auto">
+        @foreach (var item in Model.Menus)
+        {
+            <div class="col-md-6 all tipo_@item.IdTipoMenu">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>@item.Nombre</h3>
+                        <h4>@item.Precio.ToString("C")</h4>
+                        <p>
+                            <a data-toggle="modal" data-target="#modal_@item.IdMenu" class="btn btn-green">Ordenar</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modal_@item.IdMenu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Descripcion del Menu</h4>
+                        </div>
+                        <div class="modal-body">
+                            <h1>@item.Nombre</h1>
+                            <h2>@item.Precio.ToString("C")</h2>
+                            <p>
+                                @item.Descripcion
+                            </p>
+                            <label>Cantidad:</label>
+                            <input type="number" id="cantidad__@item.IdMenu" min="1" max="99" name="cantidad" value="1" required class="form-control" />
+                            @if (item.TipoMenu.Nombre.ToString().Contains("Bebidas") || item.TipoMenu.Nombre.ToString().Contains("Postres") || item.TipoMenu.Nombre.ToString().Contains("Sopas")) { }
+                            else
+                            {
+                                <label class="control-label">Termino:</label>
+                                <select name="term" id="termino__@item.IdMenu" class="form-control input-rounded">
+                                    <option value="N">Ninguno</option>
+                                    <option value="Término Rojo">Término Rojo</option>
+                                    <option value="Término Medio">Término Medio</option>
+                                    <option value="Término 3/4">Término 3/4</option>
+                                    <option value="Bien Cocido">Bien Cocido</option>
+                                    <option value="Al Carbón">Al Carbón</option>
+                                </select>
+                            }
+
+                            <label>Condiciones especiales:</label>
+                            <textarea id="comentario__@item.IdMenu" name="comentario" value="1" required class="form-control input-rounded" ></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" onclick="addOrden(@item.IdMenu, '@item.Nombre','cantidad__@item.IdMenu' , @item.Precio)" class="btn btn-green">Agregar</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            }
+            </div>
+    </div>
+</div>
+
+<script>
+    function Filter(text) {
+        if (text == ".all") {
+            $(".all").show()
+            return;
+        }
+        $(".all").hide()
+        $(text).show();
+    }
+
+    function addOrden(id, producto, cantidad, precio, estado) {
+        try {
+            var ccantidad = parseFloat($("#" + cantidad).val());
+            var comentarios = $("#comentario__" + id).val();
+            var terminoo = $("#termino__" + id).val();
+            var detalle = `
+            <tr id="tr`+ id + `">
+                <td>`+ id + `
+                    <input type="hidden" value='`+ id +`' name="id[]">
+                    <input type="hidden" value='`+ ccantidad + `' name="cantidad[]">
+                    <input type="hidden" value='`+ comentarios + `' name="comentarios[]">
+                    <input type="hidden" value='`+ terminoo +`' name="termino[]">
+                </td>
+                <td>`+ producto + `</td>
+                <td>`+ comentarios + `</td>
+                <td>`+ terminoo + `</td>
+                <td>`+ ccantidad + `</td>
+                <td> $`+ precio + `</td>
+                <td>$`+ (ccantidad * precio) + `</td>
+                <td>
+                    <button onclick="eliminarMenu(`+ id + `)" type="button" class="btn btn-danger">
+                        <i class='ti ti-close'></i>
+                    </button>
+                </td>
+            </tr>
+        `;
+
+            $("#tr" + id).remove();
+
+            $("#detalle").append(detalle);
+            alert("Agregado Exitosamente");
+        }
+        catch (ex) {
+            alert(ex);
+        }
+
+    }
+
+    function eliminarMenu(id) {
+        if (confirm("Desea eliminar esta orden"))
+            $("#tr" + id).remove();
+    }
+</script>

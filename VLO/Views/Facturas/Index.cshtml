@@ -1,0 +1,83 @@
+﻿@model IEnumerable<VLO.Models.Factura>
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+}
+<link href="~/Scripts/datatables.min.css" rel="stylesheet" />
+<script src="~/Scripts/datatables.min.js"></script>
+<h2>Reportes por Producto</h2>
+<form action="@Url.Action("Index","Facturas")" method="post">
+    <div class="col-sm-4">
+        <center>
+            <label style="color:#0101DF;">Fecha Inicial</label>
+        </center>
+        <input type="date" class="form-control" name="FI" id="FI" />
+    </div>
+
+    <div class="col-sm-4">
+        <center>
+            <label style="color:#8A0808;">Fecha Final</label>
+        </center>
+        <input type="date" class="form-control" name="FF" id="FF" />
+    </div>
+
+    <div class="col-sm-4">
+        <center>
+            <label>&ensp;</label>
+        </center>
+        <button type="submit" value="" class="btn btn-success form-control">Buscar</button>
+    </div>
+</form>
+<br />
+<br />
+<div>@ViewBag.Error</div>
+    <div class="row col-md-12 table-responsive" style="margin-top:10px">
+        <table id="example" class="table table-bordered" style="background-color:#FFF">
+            <thead>
+                <tr style="background-color:#FAFAFA; text-align:right; font-weight:bold">
+                    <td colspan="7">Total:   @ViewBag.sum</td>
+                </tr>
+            </thead>
+
+            <tr style="background-color:#E6E6E6">
+                <th>
+                    Num. Ticket
+                </th>
+                <th>Total</th>
+                <th>Fecha</th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumFactura)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalNeto)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Descuento)
+                    </td>*@
+                    <td>
+                        @item.FechaFactura
+                    </td>
+                    <td>
+                        @Html.ActionLink(" ", "Reporte", new { idPedido = item.IdPedido }, new { @class = "btn btn-warning ti ti-new-window" })
+                        @Html.ActionLink(" ", "Factura", new { idPedido = item.IdPedido }, new { target = "_blank", @class = "btn btn-success ti ti-printer" })
+                        @*@Html.ActionLink(" ", "Delete", new { id = item.NumFactura }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })*@
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+<script src="~/Scripts/TableIdioma.js"></script>
+@*@section scripts{
+        $(document).ready(function() {
+        $('#example').DataTable();
+        } );
+
+    }*@

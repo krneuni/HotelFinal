@@ -1,0 +1,59 @@
+﻿@model VLO.Models.Factura
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Factura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Producto
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DetallePedido.Menu.Nombre)
+        </dd>
+
+        <dt>
+            Precio
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DetallePedido.Menu.Precio)
+        </dd>
+
+        <dt>
+            Cant. Vendida
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DetallePedido.cantidad)
+        </dd>
+
+        <dt>
+            Fecha Venta
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaFactura)
+        </dd>
+
+        <dt>
+            Total
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NumFactura }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

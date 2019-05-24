@@ -1,0 +1,89 @@
+﻿@model IEnumerable<VLO.Models.Productos>
+@{
+    ViewBag.Title = "Index";
+}
+@*<script src="~/Scripts/bootstrap.min.js"></script>*@
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<link href="~/Scripts/datatables.min.css" rel="stylesheet" />
+<script src="~/Scripts/datatables.min.js"></script>
+
+<h2>Productos</h2>
+<div >
+    <a href="@Url.Action("Create","Productos")" class="btn btn-success"> <i class="glyphicon glyphicon-plus"></i> Nuevo</a>
+</div>
+<div>
+    <p>Productos con poca existencia 
+        <a href="@Url.Action("Existencias","Productos")" class="btn btn-info"> <i class="ti ti-eye"></i></a>
+    </p>
+</div>
+
+<div class="table-responsive" style="margin-top:10px">
+    <table id="dtTable" class="table table-bordered" style="background-color:#FFF">
+        <thead>
+            <tr style="background-color:#E6E6E6">
+                <th>
+                    @Html.DisplayNameFor(model => model.Categoria.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Marca)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cantidad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CantidadMinima)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UnidadMedida)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="@(item.Cantidad==item.CantidadMinima?"alert alert-danger":" ")">
+                    <td>
+                        Categoria
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Marca)
+                    </td>
+                    <td>
+                        Cant.
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        Cant. Mínima
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnidadMedida)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    <td>
+                        @Html.ActionLink(" ", "Edit", new { id = item.IdProducto }, new { @class = "btn btn-warning glyphicon glyphicon-refresh" })
+                        @Html.ActionLink(" ", "Delete", new { id = item.IdProducto }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+<script src="~/Scripts/TableIdioma.js"></script>
