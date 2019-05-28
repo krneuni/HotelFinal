@@ -59,8 +59,9 @@ namespace VLO.Controllers
         public ActionResult Solicitar(int? id)
         {
             ViewBag.mesa = id;
+            ViewBag.alerta ="hidden";
             SolicitudViewModel svm = new SolicitudViewModel();
-            //svm.Prestamos = queryOrd;
+            
             svm.Productos = db.Productos.ToList();
             svm.Categorias = db.Categoria.ToList();
             return View(svm);
@@ -70,25 +71,31 @@ namespace VLO.Controllers
         [HttpPost]
         public async Task<ActionResult> AddPrest(AddPrestViewModel apvm)
         {
-            //Usuarios e = db.Usuarios.Where(x => x.IdUser == 1).FirstOrDefault();
-            var e = Convert.ToInt32(Session["Id"]);
-            for (var i = 0; i < apvm.id.Count; i++)
+            if (apvm.id != null)
             {
-                Prestamos p = new Prestamos();
-                p.Cantidad = apvm.cantidad[i];
-                p.IdUser = e;
-                p.Estado = 1;
-                p.Fecha = Convert.ToString(DateTime.Now);
-                p.CantidadDevuelta = 0;
-                p.IdProducto = apvm.id[i];
-                db.Prestamos.Add(p);
-                await db.SaveChangesAsync();
+                var e = Convert.ToInt32(Session["Id"]);
+                for (var i = 0; i < apvm.id.Count; i++)
+                {
+                    Prestamos p = new Prestamos();
+                    p.Cantidad = apvm.cantidad[i];
+                    p.IdUser = e;
+                    p.Estado = 1;
+                    p.Fecha = DateTime.Now;
+                    p.FechaDev = null;
+                    p.CantidadDevuelta = 0;
+                    p.IdProducto = apvm.id[i];
+                    db.Prestamos.Add(p);
+                    await db.SaveChangesAsync();
+                    return Redirect("Espera");
 
-                
-            }  
-                
+                }
+            }
 
-            return Redirect("Espera");
+            ViewBag.alerta = "vissible";
+            ViewBag.Error = "El prestamo no puede ir vacío";
+            
+
+            return Redirect("Solicitar");
         }
 
         //Vista de las solicitudes para el admin
@@ -114,7 +121,7 @@ namespace VLO.Controllers
 
         public ActionResult Espera()
         {
-            var soli = db.Prestamos.Where(x => x.Estado == 2).ToList();
+            var soli = db.Prestamos.Where(x => x.Estado ==2).ToList();
             SolicitudViewModel cvm = new SolicitudViewModel();
             cvm.Prestamos = soli;
             cvm.Productos = db.Productos.ToList();
@@ -147,6 +154,7 @@ namespace VLO.Controllers
             SolicitudViewModel cvm = new SolicitudViewModel();
             cvm.Prestamos = soli;
             cvm.Productos = db.Productos.ToList();
+            
             return View(cvm);
 
         }
@@ -161,20 +169,27 @@ namespace VLO.Controllers
         public ActionResult Devolver(int idprestamos, int cant)
         {
             Prestamos d = db.Prestamos.Find(idprestamos);
-            d.Estado = 4;
-            d.CantidadDevuelta = cant;
-            db.Entry(d).State = EntityState.Modified;
-            db.SaveChanges();
+            var canti = d.Cantidad;
 
-            //Encontrar el producto
-            var prod = db.Productos.Find(d.IdProducto);
-            var Disminuye = cant;
-            double cantidad = prod.Cantidad;
-            prod.Cantidad = cantidad + Disminuye;
-            db.Entry(prod).State = EntityState.Modified;
-            db.SaveChanges();
+            if (cant <= canti)
+            {
+                d.Estado = 4;
+                d.CantidadDevuelta = cant;
+                d.FechaDev = DateTime.Now;
+                db.Entry(d).State = EntityState.Modified;
+                db.SaveChanges();
 
+                //Encontrar el producto
+                var prod = db.Productos.Find(d.IdProducto);
+                var Disminuye = cant;
+                double cantidad = prod.Cantidad;
+                prod.Cantidad = cantidad + Disminuye;
+                db.Entry(prod).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            ViewBag.alerta = "vissible";
 
+            ViewBag.error = "No válido";
 
             return Redirect("/Prestamos/Devolucion");
         }

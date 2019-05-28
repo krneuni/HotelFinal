@@ -3,16 +3,16 @@ namespace VLO.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Nueva : DbMigration
+    public partial class Fecha : DbMigration
     {
         public override void Up()
         {
-            AlterColumn("dbo.Facturas", "FechaFactura", c => c.DateTime(nullable: false));
+            AlterColumn("dbo.Prestamos", "FechaDev", c => c.DateTime());
         }
         
         public override void Down()
         {
-            AlterColumn("dbo.Facturas", "FechaFactura", c => c.String());
+            AlterColumn("dbo.Prestamos", "FechaDev", c => c.DateTime(nullable: false));
         }
     }
 }

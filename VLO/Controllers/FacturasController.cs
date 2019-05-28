@@ -37,7 +37,8 @@ namespace VLO.Controllers
 
                 if (Registro != null)
                 {
-                    ViewBag.sum = db.Factura.Sum(l => l.TotalNeto);
+                    ViewBag.sum = (from x in db.Factura where (x.FechaFactura >= FI && x.FechaFactura <= FM) select x.TotalNeto).Sum();
+                        
                 }
                 else
                 {

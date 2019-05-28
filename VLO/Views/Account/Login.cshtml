@@ -1,10 +1,8 @@
 ﻿@model VLO.Models.Usuarios
-
 @{
     ViewBag.Title = "Login";
     Layout = null;
 }
-
 <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
@@ -14,56 +12,81 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vista las Olas</title>
+    <!-- ================= Favicon ================== -->
+    <!-- Styles -->
+    <link href="~/Content/estilos.css" rel="stylesheet" />
+    <style>
+
+        .bg-body {
+            background-image: url('../../Content/fondo.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+        }
+    </style>
 </head>
-<body id="LoginForm">
-    <div class="container">
-        <div class="login-logo">
-            <center><img src="~/Content/Logo.png" alt="VLO" class="img-responsive"/></center>
-        </div>
-        <div class="login-form" >
-            <div class="main-div">
-                <div class="">
-
-                    <h2>Inicio de Sesión</h2>
-                    <p>Ingrese Usuario y Contraseña</p>
-                    <div class="@ViewBag.alerta alert alert-danger alert-dismissable" role="alert">
-
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">
-                                &times;
+<body class="bg-body">
+    <div class="unix-login">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3">
+                    <div class="login-content">
+                        <div class="login-logo">
 
 
-                            </span>
-                        </button>@ViewBag.error
+                            <center><a href="/"><span><img src="~/Content/Logo.png" alt="VLO" class="img-responsive" /></span></a></center>
+                        </div>
+                        <div class="login-form">
+                            <center>
+                                <h4>
+                                    Inicio de sesión<br />
+                                    <br />
+                                    Ingrese Usuario y Contraseña
+                                </h4>
+                            </center>
+                            <div class="@ViewBag.alerta alert alert-danger alert-dismissable" role="alert">
 
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">
+                                        &times;
+
+
+                                    </span>
+                                </button>@ViewBag.error
+
+                            </div>
+                            <form action="/" method="post">
+                                <center>
+                                    <div class="form-group">
+                                        
+                                        <input type="text" name="username" class="form-control" placeholder="Usuario">
+                                    </div>
+                                </center>
+                                <center>
+                                    <div class="form-group">
+                                        
+                                        <input type="password" name="contra" class="form-control" placeholder="Contraseña">
+                                    </div>
+                                </center>
+                                <center><button type="submit" class="btn new">Ingresar</button></center>
+                            </form>
+                        </div>
                     </div>
-
-                    <form id="Login" action="/" method="post">
-
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="username" id="inputEmail" placeholder="Usuario">
-                        </div>
-
-                        <div class="form-group">
-                            <input type="password" class="form-control" name="contra" id="inputPassword" placeholder="Contraseña">
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Ingresar</button>
-
-                    </form>
                 </div>
             </div>
-
         </div>
     </div>
-
 
 </body>
 </html>

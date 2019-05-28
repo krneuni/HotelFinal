@@ -48,7 +48,15 @@ namespace VLO.Controllers
         public ActionResult Create()
         {
             ViewBag.IdMenu = new SelectList(db.Menus, "IdMenu", "Nombre");
-            ViewBag.IdProducto = new SelectList(db.Productos, "IdProducto", "Nombre");
+
+            var TodosProd = db.Productos.ToList();
+            var Cat = db.Categoria.ToList();
+            var Productos = (from p in TodosProd where p.IdCategoria == 2 select p).ToList();
+            var CocinaOnly = TodosProd.Except(Productos);
+
+
+            ViewBag.IdProducto = new SelectList(CocinaOnly, "IdProducto", "Nombre");
+
             return View();
         }
 

@@ -6,6 +6,8 @@
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <link href="~/Scripts/datatables.min.css" rel="stylesheet" />
 <script src="~/Scripts/datatables.min.js"></script>
+<link href="~/Content/estilos.css" rel="stylesheet" />
+
 
 <h2>Productos</h2>
 <div >
@@ -22,28 +24,28 @@
         <thead>
             <tr style="background-color:#E6E6E6">
                 <th>
-                    @Html.DisplayNameFor(model => model.Categoria.Nombre)
+                    Categoria
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Nombre)
+                    Nombre
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Marca)
+                    Marca
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Cantidad)
+                    Cant
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Fecha)
+                    Vencim.
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.CantidadMinima)
+                    Cant. Mínima
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.UnidadMedida)
+                    U. Medida
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Estado)
+                    Estado
                 </th>
                 <th></th>
             </tr>
@@ -53,7 +55,7 @@
             {
                 <tr class="@(item.Cantidad==item.CantidadMinima?"alert alert-danger":" ")">
                     <td>
-                        Categoria
+                        @item.Categoria.Nombre
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Nombre)
@@ -62,13 +64,13 @@
                         @Html.DisplayFor(modelItem => item.Marca)
                     </td>
                     <td>
-                        Cant.
+                        @item.Cantidad
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Fecha)
                     </td>
                     <td>
-                        Cant. Mínima
+                        @item.CantidadMinima
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.UnidadMedida)

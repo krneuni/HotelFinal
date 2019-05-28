@@ -12,8 +12,18 @@
                 <label><strong>Empleado: </strong></label>
                 <label>@Session["nombre"]</label>
             </div>
-            <input type="hidden" name="mesa" value="@ViewBag.mesa" />
+            <input type="hidden" name="mesa" value="@ViewBag.Pr" />
+            <div class="@ViewBag.alerta alert alert-danger alert-dismissable" role="alert">
 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">
+                        &times;
+
+
+                    </span>
+                </button>@ViewBag.error
+
+            </div>
             <table class="table table-bordered" style="background-color:#FFF">
                 <thead>
                     <tr>
@@ -23,13 +33,10 @@
                         <td></td>
                     </tr>
                 </thead>
-                <tbody id="detalle">
-                   
-                </tbody>
+                <tbody id="detalle"></tbody>
             </table>
             <a href="@Url.Action("Index","Home")" class="btn btn-danger btn-rounded">Cancelar</a>
             <button type="submit" class="btn btn-green btn-rounded">Solicitar</button>
-
         </form>
     </div>
     <div class="col-md-6">

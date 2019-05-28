@@ -19,10 +19,7 @@
                     @{ var Adet = Model.Prestamos.Where(x => x.IdProducto == item.IdProducto).ToList();}
                     @foreach (var item2 in Adet)
                     {
-
-                        var Prod = Model.Productos.Where(x => x.IdProducto == item2.IdProducto).FirstOrDefault();
-                        
-                        <p>Producto: @Prod.Nombre</p>
+                        <p>Producto: @item2.Productos.Nombre</p>
                         <p>Cantidad: @item.Cantidad</p>
                         <p>
                             Estado:

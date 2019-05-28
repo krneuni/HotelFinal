@@ -24,7 +24,11 @@ namespace VLO.Models
 
         [DataType(DataType.Date, ErrorMessage = "Ingresar una fecha valida")]
         [Display(Name = "Fecha de prestamo ")]
-        public string Fecha { get; set; }
+        public DateTime Fecha { get; set; }
+
+        [DataType(DataType.Date, ErrorMessage = "Ingresar una fecha valida")]
+        [Display(Name = "Fecha de devolución ")]
+        public DateTime? FechaDev { get; set; }
 
         public int Estado { get; set; }
         //Relaciones

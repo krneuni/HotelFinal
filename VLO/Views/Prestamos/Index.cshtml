@@ -22,7 +22,7 @@
             <th>Fecha de prestamo</th>
             <th>Estado</th>
             <th>Cantidad devuelta</th>
-            <th></th>
+            <th>Fecha de devolución</th>
         </tr>
 
         @foreach (var item in Model)
@@ -66,10 +66,7 @@
                     }
                             </td>
                 <td>@item.CantidadDevuelta</td>
-                @*<td>
-                    @Html.ActionLink(" ", "Edit", new { id = item.IdPrestamo }, new { @class = "btn btn-warning glyphicon glyphicon-refresh" })
-                    @Html.ActionLink(" ", "Delete", new { id = item.IdPrestamo }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
-                </td>*@
+                <td>@item.FechaDev</td>
             </tr>
         }
 

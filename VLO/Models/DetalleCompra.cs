@@ -24,7 +24,7 @@ namespace VLO.Models
         [Required(ErrorMessage = "Este campo es requerido")]
         [DataType(DataType.Date)]
         [Display(Name = "Fecha Compra ")]
-        public string FechaCompra { get; set; }
+        public DateTime FechaCompra { get; set; }
         
         [Display(Name = "Precio Total ")]
         public double PrecioTotal { get; set; }

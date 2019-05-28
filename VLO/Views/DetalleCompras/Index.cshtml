@@ -9,29 +9,35 @@
 <p>
     <a href="@Url.Action("Create","DetalleCompras")" class="btn btn-success"> <i class="glyphicon glyphicon-plus"></i> Nuevo</a>
 </p>
-@*<form action="@Url.Action("Index","DetalleCompras")" method="post" id="frm">
-
-    <div>
-        <div class="form-group has-success col-md-12" style="border-color:black;">
-                
-                <div class="col-md-4">
-                    <select name="Opciones" class="form-control has-success ">
-                        <option value="0">Selecciona una opcion </option>
-                        <option value="1">Proveedor</option>
-                        <option value="2">Fecha</option>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <input type="text" name="txtbuscar" value="" class="form-control" placeholder="Busqueda..." autocomplete="off" />
-                </div>
-                <div class="col-md-4">
-                    <input type="submit" class="btn btn-info" name="btn" value="BUSCAR" />
-                </div>
-        </div>
+<form action="@Url.Action("Index","DetalleCompras")" method="post">
+    <div class="col-sm-4">
+        <center>
+            <label style="color:#0101DF;">Fecha Inicial</label>
+        </center>
+        <input type="date" class="form-control" name="FI" id="FI" />
     </div>
-</form>*@
+
+    <div class="col-sm-4">
+        <center>
+            <label style="color:#8A0808;">Fecha Final</label>
+        </center>
+        <input type="date" class="form-control" name="FF" id="FF" />
+    </div>
+
+    <div class="col-sm-4">
+        <center>
+            <label>&ensp;</label>
+        </center>
+        <button type="submit" value="" class="btn btn-success form-control">Buscar</button>
+    </div>
+</form>
 <div class="row col-md-12 table-responsive" style="margin-top:10px">
     <table class="table table-bordered" style="background-color:#FFF">
+        <thead>
+            <tr style="background-color:#FAFAFA; text-align:right; font-weight:bold">
+                <td colspan="7">Total:   @ViewBag.sum</td>
+            </tr>
+        </thead>
         <tr style="background-color:#E6E6E6">
             <th>
                 @Html.DisplayNameFor(model => model.Productos.Nombre)
@@ -56,7 +62,6 @@
             </th>
             <th></th>
         </tr>
-
         @foreach (var item in Model)
         {
             <tr>
@@ -88,6 +93,5 @@
                 </td>
             </tr>
         }
-
     </table>
 </div>

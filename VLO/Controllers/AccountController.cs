@@ -26,10 +26,6 @@ namespace VLO.Controllers
         public ActionResult Login()
         {
             ViewBag.alerta = "hidden";
-
-            //TimeZoneInfo zona = TimeZoneInfo.FindSystemTimeZoneById("Central America Standard Time");
-            //DateTime elSalvador = TimeZoneInfo.ConvertTime(DateTime.Now, zona);
-            //ViewBag.fecha = elSalvador.ToLongDateString();
             return View();
         }
         [HttpPost]

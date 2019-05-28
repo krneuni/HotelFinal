@@ -67,7 +67,7 @@ namespace VLO.Controllers
 
         public ActionResult OrdenesTerminadas()
         {
-            var orden = db.Pedido.Where(x => x.Estado == 3).ToList();
+            var orden = db.Pedido.Where(x => x.Estado == 2).ToList();
             var detalle = db.DetallePedido.Where(x => x.Estado == 2).ToList();
             CocinaViewModel cvm = new CocinaViewModel();
             cvm.pedidos = orden;

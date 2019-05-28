@@ -7,13 +7,13 @@ namespace VLO.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class Fecha : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Fecha));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905241433020_InitialCreate"; }
+            get { return "201905281657423_Fecha"; }
         }
         
         string IMigrationMetadata.Source

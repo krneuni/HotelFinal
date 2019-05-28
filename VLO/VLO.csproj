@@ -126,6 +126,7 @@
     <Content Include="Content\css\normalize.css" />
     <Content Include="Content\css\sweetalert2.css" />
     <Content Include="Content\estilos.css" />
+    <Content Include="Content\fondo.jpg" />
     <Content Include="Content\icon.png" />
     <Content Include="Content\Logo.png" />
     <Content Include="Content\Site.css" />
@@ -251,13 +252,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905241433020_InitialCreate.cs" />
-    <Compile Include="Migrations\201905241433020_InitialCreate.Designer.cs">
-      <DependentUpon>201905241433020_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201905281627198_InitialCreate.cs" />
+    <Compile Include="Migrations\201905281627198_InitialCreate.Designer.cs">
+      <DependentUpon>201905281627198_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905241505053_Nueva.cs" />
-    <Compile Include="Migrations\201905241505053_Nueva.Designer.cs">
-      <DependentUpon>201905241505053_Nueva.cs</DependentUpon>
+    <Compile Include="Migrations\201905281657423_Fecha.cs" />
+    <Compile Include="Migrations\201905281657423_Fecha.Designer.cs">
+      <DependentUpon>201905281657423_Fecha.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddOrdenViewModel.cs" />
@@ -386,11 +387,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905241433020_InitialCreate.resx">
-      <DependentUpon>201905241433020_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905281627198_InitialCreate.resx">
+      <DependentUpon>201905281627198_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905241505053_Nueva.resx">
-      <DependentUpon>201905241505053_Nueva.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905281657423_Fecha.resx">
+      <DependentUpon>201905281657423_Fecha.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

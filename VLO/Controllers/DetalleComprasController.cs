@@ -21,33 +21,36 @@ namespace VLO.Controllers
             return View(detalleCompra.ToList());
         }
 
-        //[HttpPost]
-        //public ActionResult Index(string txtbuscar, string Opciones)
-        //{
-        //    var pro = db.Proveedores.FirstOrDefault();
-        //    var query = from tbl in db.DetalleCompra select tbl;
-        //    //validacion para que la caja no traiga datos vacios
-        //    string formato = txtbuscar.Trim();
-        //    if (formato != "")
-        //    {
-        //        if (Opciones == "0")
-        //        {
-        //            if (Opciones == "1")
-        //            {
-        //                query = from proveedor in db.DetalleCompra where proveedor.IdProveedor == pro.IdProveedor select proveedor;
-        //            }
+        [HttpPost]
+        public ActionResult Index(DateTime FI, DateTime FF)
+        {
+            try
+            {
+                DateTime FM = FF.AddDays(1);
+                var Registro = (from t in db.DetalleCompra
+                                where (t.FechaCompra >= FI && t.FechaCompra <= FM)
+                                orderby t.IdDetalle ascending
+                                select t).ToList();
 
-        //            if (Opciones == "2")
-        //            {
-        //                query = (from fecha in db.DetalleCompra where fecha.FechaCompra.Contains(txtbuscar) select fecha);
-        //            }
-        //        }
 
-        //    }
-        //        return View(query.ToList());
-        //}
-            // GET: DetalleCompras/Details/5
-            public ActionResult Details(int? id)
+                if (Registro != null)
+                {
+                    ViewBag.sum = (from x in db.DetalleCompra where (x.FechaCompra >= FI && x.FechaCompra <= FM) select x.PrecioTotal).Sum();
+                    
+                }
+                else
+                {
+                    ViewBag.Error = "No hay datos";
+                }
+                return View(Registro);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        // GET: DetalleCompras/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
