@@ -13,7 +13,9 @@
                 <label>@Session["nombre"]</label>
             </div>
             <input type="hidden" name="mesa" value="@ViewBag.Pr" />
-            <div class="@ViewBag.alerta alert alert-danger alert-dismissable" role="alert">
+            @if (ViewBag.alerta == true)
+            {
+            <div class="alert-danger alert-dismissable" role="alert">
 
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">
@@ -24,6 +26,8 @@
                 </button>@ViewBag.error
 
             </div>
+            }
+            
             <table class="table table-bordered" style="background-color:#FFF">
                 <thead>
                     <tr>

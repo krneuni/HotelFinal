@@ -59,7 +59,7 @@ namespace VLO.Controllers
         public ActionResult Solicitar(int? id)
         {
             ViewBag.mesa = id;
-            ViewBag.alerta ="hidden";
+            ViewBag.alerta =false;
             SolicitudViewModel svm = new SolicitudViewModel();
             
             svm.Productos = db.Productos.ToList();
@@ -91,7 +91,7 @@ namespace VLO.Controllers
                 }
             }
 
-            ViewBag.alerta = "vissible";
+            ViewBag.alerta = true;
             ViewBag.Error = "El prestamo no puede ir vacío";
             
 
@@ -121,7 +121,7 @@ namespace VLO.Controllers
 
         public ActionResult Espera()
         {
-            var soli = db.Prestamos.Where(x => x.Estado ==2).ToList();
+            var soli = db.Prestamos.Where(x => x.Estado ==2 ).ToList();
             SolicitudViewModel cvm = new SolicitudViewModel();
             cvm.Prestamos = soli;
             cvm.Productos = db.Productos.ToList();

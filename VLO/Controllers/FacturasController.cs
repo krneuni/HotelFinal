@@ -18,7 +18,7 @@ namespace VLO.Controllers
         public ActionResult Index()
         {
             var factura = db.Factura.Include(f => f.Pedido);
-            
+            ViewBag.bandera = true;
             return View(factura.ToList());
         }
 
@@ -29,24 +29,15 @@ namespace VLO.Controllers
             
             try
             {
-                if (FI != null)
-                {
-                    DateTime FM = FF.AddDays(1);
-                    var Registro = (from t in db.Factura
-                                    where (t.FechaFactura >= FI && t.FechaFactura <= FM)
-                                    orderby t.NumFactura ascending
-                                    select t).ToList();
+                DateTime FM = FF.AddDays(1);
+                var Registro = (from t in db.Factura
+                                where (t.FechaFactura >= FI && t.FechaFactura <= FM)
+                                orderby t.NumFactura ascending
+                                select t).ToList();
 
-                    ViewBag.sum = (from x in db.Factura where (x.FechaFactura >= FI && x.FechaFactura <= FM) select x.TotalNeto).Sum();
-                    ViewBag.bandera = true;
-                    return View(Registro);
-                }
-                else
-                {
-                    ViewBag.Error = "No hay datos";
-                    ViewBag.bandera = false;
-                    return View();
-                }
+                ViewBag.sum = (from x in db.Factura where (x.FechaFactura >= FI && x.FechaFactura <= FM) select x.TotalNeto).Sum();
+                ViewBag.bandera = true;
+                return View(Registro);
                 
             }
             catch

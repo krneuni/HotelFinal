@@ -18,6 +18,7 @@ namespace VLO.Controllers
         public ActionResult Index()
         {
             var detalleCompra = db.DetalleCompra.Include(d => d.Productos).Include(d => d.Proveedores);
+            ViewBag.bandera = true;
             return View(detalleCompra.ToList());
         }
 

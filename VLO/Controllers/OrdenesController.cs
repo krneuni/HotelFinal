@@ -16,11 +16,7 @@ namespace VLO.Controllers
         // GET: Ordenes
         public ActionResult Index()
         {
-            OrdenesViewModel All = new OrdenesViewModel();
-            All.DetallePedido = db.DetallePedido.ToList();
-            All.Pedido = db.Pedido.ToList();
-            All.Mesa = db.Mesa.ToList();
-            return View(All);
+            return View(db.Mesa.ToList());
         }
 
         public ActionResult Ordenes()

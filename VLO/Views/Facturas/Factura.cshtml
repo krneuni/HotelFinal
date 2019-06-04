@@ -152,19 +152,14 @@
             </table>
         </td>
     </tr>
-    @*<button type="button" onclick="printDoc()" class="btn btn-green">Imprimir</button>*@
+    
 </body>
-@*@section scripts{*@
-<script>
-            //setTimeout(EventoR(), 40000);
-            //function EventoR() {
-            //    //alert("Sirve");
-            //}
 
+<script>
             window.print();
             setInterval(function () {
                 window.location.href = '@Url.Action("Index", "Ordenes")';
             }, 5000);
-            @*window.location.href = '@Url.Action("Index", "Ordenes")';*@
+            
 </script>
-@*}*@
+
