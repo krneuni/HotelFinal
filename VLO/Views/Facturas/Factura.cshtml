@@ -45,7 +45,7 @@
                 <p style="margin-bottom:0px;margin-top:0px;font-size:12px;">Autorización de Imprenta N° 782 D.G.I.I</p>
                 <p style="margin-bottom:0px;margin-top:0px;font-size:12px;">Fecha de Autorización 23/07/1999</p>
                 @*<p> Fecha: @System.DateTime.Now.Day - @System.DateTime.Now.Month - @System.DateTime.Now.Year</p>*@
-    
+
                 @foreach (var item in Model.pedidos)
                 {
                     <div>
@@ -76,7 +76,7 @@
             <td colspan="10">
     </table>
     <table>
-        <tr style="font-size:15px;background:#000;color:#FFF">
+        <tr style="font-size:15px;background:none;color:#FFF">
             <td>CANT.</td>
             <td style="width:30%">DESCRIPCION</td>
             <td>PRECIO UNITARIO</td>
@@ -139,9 +139,9 @@
                             <p>(-) IVA Retenido</p>
                             <p>Sub-Total: @total.ToString("C")</p>
                             <p>10% PROPINA: @item.Factura.FirstOrDefault().Propina</p>
-                            
+
                             @*<p>Total: @item.Factura.FirstOrDefault().Total</p>
-                            <p>Descuento (-): @item.Descuento</p>*@
+                                <p>Descuento (-): @item.Descuento</p>*@
                             <p>Ventas no Sujetas</p>
                             <p>Ventas Extensas</p>
                             <p>Venta Total @item.Factura.FirstOrDefault().TotalNeto</p>
@@ -153,10 +153,10 @@
         </td>
     </tr>
     @*<button type="button" onclick="printDoc()" class="btn btn-green">Imprimir</button>*@
-    </body>
-    @*@section scripts{*@
-        <script>
-            //setTimeout(EventoR(), 40000);            
+</body>
+@*@section scripts{*@
+<script>
+            //setTimeout(EventoR(), 40000);
             //function EventoR() {
             //    //alert("Sirve");
             //}
@@ -166,5 +166,5 @@
                 window.location.href = '@Url.Action("Index", "Ordenes")';
             }, 5000);
             @*window.location.href = '@Url.Action("Index", "Ordenes")';*@
-        </script>
-    @*}*@
+</script>
+@*}*@

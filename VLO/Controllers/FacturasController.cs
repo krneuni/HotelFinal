@@ -24,31 +24,36 @@ namespace VLO.Controllers
 
 
         [HttpPost]
-        public ActionResult Index(DateTime FI, DateTime FF)
+        public ActionResult Index(DateTime? FI, DateTime FF)
         {
+            
             try
             {
-                DateTime FM = FF.AddDays(1);
-                var Registro = (from t in db.Factura
-                                where (t.FechaFactura >= FI && t.FechaFactura <= FM)
-                                orderby t.NumFactura ascending
-                                select t).ToList();
-
-
-                if (Registro != null)
+                if (FI != null)
                 {
+                    DateTime FM = FF.AddDays(1);
+                    var Registro = (from t in db.Factura
+                                    where (t.FechaFactura >= FI && t.FechaFactura <= FM)
+                                    orderby t.NumFactura ascending
+                                    select t).ToList();
+
                     ViewBag.sum = (from x in db.Factura where (x.FechaFactura >= FI && x.FechaFactura <= FM) select x.TotalNeto).Sum();
-                        
+                    ViewBag.bandera = true;
+                    return View(Registro);
                 }
                 else
                 {
                     ViewBag.Error = "No hay datos";
+                    ViewBag.bandera = false;
+                    return View();
                 }
-                return View(Registro);
+                
             }
-            catch (Exception)
+            catch
             {
-                throw;
+                ViewBag.Error = "No hay datos";
+                ViewBag.bandera = false;
+                return View();
             }
         }
 

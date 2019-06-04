@@ -31,12 +31,14 @@
 </form>
 <br />
 <br />
-<div>@ViewBag.Error</div>
+
     <div class="row col-md-12 table-responsive" style="margin-top:10px">
         <table id="example" class="table table-bordered" style="background-color:#FFF">
             <thead>
                 <tr style="background-color:#FAFAFA; text-align:right; font-weight:bold">
-                    <td colspan="7">Total:   @ViewBag.sum</td>
+                    <td colspan="7">
+                        Total:   @ViewBag.sum
+                    </td>
                 </tr>
             </thead>
 
@@ -48,30 +50,36 @@
                 <th>Fecha</th>
                 <th></th>
             </tr>
-            @foreach (var item in Model)
+            @if (ViewBag.bandera == true)
             {
+                foreach (var item in Model)
+                {
 
 
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NumFactura)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TotalNeto)
-                    </td>
-                    @*<td>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumFactura)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalNeto)
+                        </td>
+                        @*<td>
                         @Html.DisplayFor(modelItem => item.Descuento)
                     </td>*@
-                    <td>
-                        @item.FechaFactura
-                    </td>
-                    <td>
-                        @Html.ActionLink(" ", "Reporte", new { idPedido = item.IdPedido }, new { @class = "btn btn-warning ti ti-new-window" })
-                        @Html.ActionLink(" ", "Factura", new { idPedido = item.IdPedido }, new { target = "_blank", @class = "btn btn-success ti ti-printer" })
-                        @*@Html.ActionLink(" ", "Delete", new { id = item.NumFactura }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })*@
-                    </td>
-                </tr>
+                        <td>
+                            @item.FechaFactura
+                        </td>
+                        <td>
+                            @Html.ActionLink(" ", "Reporte", new { idPedido = item.IdPedido }, new { @class = "btn btn-warning ti ti-new-window" })
+                            @Html.ActionLink(" ", "Factura", new { idPedido = item.IdPedido }, new { target = "_blank", @class = "btn btn-success ti ti-printer" })
+                            @*@Html.ActionLink(" ", "Delete", new { id = item.NumFactura }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })*@
+                        </td>
+                    </tr>
+                }
             }
+            <tr>
+                <td colspan="4" style="background-color:#FAFAFA; text-align:center; font-weight:bold">@ViewBag.Error</td>
+            </tr>
         </table>
     </div>
 <script src="~/Scripts/TableIdioma.js"></script>

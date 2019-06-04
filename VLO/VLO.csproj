@@ -376,6 +376,7 @@
     <Content Include="Views\Productos\Existencias.cshtml" />
     <Content Include="Views\Facturas\Reporte.cshtml" />
     <Content Include="Views\Facturas\Details.cshtml" />
+    <Content Include="Views\Facturas\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

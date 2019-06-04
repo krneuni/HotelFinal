@@ -1457,3 +1457,4 @@ C:\krn\HotelFinal\VLO\obj\Debug\VLO.pdb
 C:\krn\HotelFinal\VLO\obj\Debug\VLO.Migrations.InitialCreate.resources
 C:\krn\HotelFinal\VLO\obj\Debug\VLO.csproj.GenerateResource.cache
 C:\krn\HotelFinal\VLO\obj\Debug\VLO.Migrations.Fecha.resources
+C:\krn\HotelFinal\VLO\obj\Debug\VLO.csprojAssemblyReference.cache

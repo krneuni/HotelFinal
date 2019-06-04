@@ -35,7 +35,7 @@
     <table class="table table-bordered" style="background-color:#FFF">
         <thead>
             <tr style="background-color:#FAFAFA; text-align:right; font-weight:bold">
-                <td colspan="7">Total:   @ViewBag.sum</td>
+                <td colspan="8">Total:   @ViewBag.sum</td>
             </tr>
         </thead>
         <tr style="background-color:#E6E6E6">
@@ -62,36 +62,42 @@
             </th>
             <th></th>
         </tr>
-        @foreach (var item in Model)
+        @if (ViewBag.bandera == true)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Productos.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Proveedores.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cantidad)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PrecioUnit)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FechaCompra)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PrecioTotal)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Codigo)
-                </td>
-                <td>
-                    @Html.ActionLink(" ", "Edit", new { id = item.IdDetalle }, new { @class = "btn btn-warning glyphicon glyphicon-refresh" })
-                    @*@Html.ActionLink("Details", "Details", new { id=item.IdDetalle }) |*@
-                    @Html.ActionLink(" ", "Delete", new { id = item.IdDetalle }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
-                </td>
-            </tr>
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Productos.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Proveedores.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cantidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrecioUnit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaCompra)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrecioTotal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Codigo)
+                    </td>
+                    <td>
+                        @Html.ActionLink(" ", "Edit", new { id = item.IdDetalle }, new { @class = "btn btn-warning glyphicon glyphicon-refresh" })
+                        @*@Html.ActionLink("Details", "Details", new { id=item.IdDetalle }) |*@
+                        @Html.ActionLink(" ", "Delete", new { id = item.IdDetalle }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+                    </td>
+                </tr>
+            }
         }
-    </table>
+            <tr>
+                <td colspan="8" style="background-color:#FAFAFA; text-align:center; font-weight:bold">@ViewBag.Error</td>
+            </tr>
+        </table>
 </div>

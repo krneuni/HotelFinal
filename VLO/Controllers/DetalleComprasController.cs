@@ -32,21 +32,16 @@ namespace VLO.Controllers
                                 orderby t.IdDetalle ascending
                                 select t).ToList();
 
-
-                if (Registro != null)
-                {
-                    ViewBag.sum = (from x in db.DetalleCompra where (x.FechaCompra >= FI && x.FechaCompra <= FM) select x.PrecioTotal).Sum();
-                    
-                }
-                else
-                {
-                    ViewBag.Error = "No hay datos";
-                }
+                
+                ViewBag.sum = (from x in db.DetalleCompra where (x.FechaCompra >= FI && x.FechaCompra <= FM) select x.PrecioTotal).Sum();
+                ViewBag.bandera = true;
                 return View(Registro);
             }
-            catch (Exception)
+            catch
             {
-                throw;
+                ViewBag.Error = "No hay datos";
+                ViewBag.bandera = false;
+                return View();
             }
         }
         // GET: DetalleCompras/Details/5
