@@ -18,9 +18,10 @@
             @{ var Adet = Model.factura.Where(x => x.IdPedido == item.IdPedido).ToList();}
             @foreach (var item2 in Adet)
             {
-                <p class="col-md-4">Venta: @item2.Total</p>
-                <p class="col-md-4">Descuento (-): @item2.Descuento</p>
-                <p class="col-md-4" style="font-weight:bold">Venta Total: @item2.TotalNeto</p>
+                <p class="col-md-3">Fecha @item2.FechaFactura</p>
+                <p class="col-md-3">Venta: @item2.Total</p>
+                <p class="col-md-3">Descuento (-): @item2.Descuento</p>
+                <p class="col-md-3" style="font-weight:bold">Venta Total: @item2.TotalNeto</p>
             }
 
         </div>

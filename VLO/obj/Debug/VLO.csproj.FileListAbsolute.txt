@@ -1458,3 +1458,8 @@ C:\krn\HotelFinal\VLO\obj\Debug\VLO.csproj.CoreCompileInputs.cache
 C:\krn\HotelFinal\VLO\obj\Debug\VLO.csproj.CopyComplete
 C:\krn\HotelFinal\VLO\obj\Debug\VLO.dll
 C:\krn\HotelFinal\VLO\obj\Debug\VLO.pdb
+C:\krn\HotelFinal\VLO\obj\Debug\VLO.Migrations.Fact.resources
+C:\krn\HotelFinal\VLO\obj\Debug\VLO.Migrations.Fac.resources
+C:\krn\HotelFinal\VLO\obj\Debug\VLO.Migrations.Fack.resources
+C:\krn\HotelFinal\VLO\obj\Debug\VLO.Migrations.Fack1.resources
+C:\krn\HotelFinal\VLO\obj\Debug\VLO.Migrations.Fa.resources

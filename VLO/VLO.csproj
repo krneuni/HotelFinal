@@ -261,6 +261,26 @@
     <Compile Include="Migrations\201905281657423_Fecha.Designer.cs">
       <DependentUpon>201905281657423_Fecha.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906111708265_Fact.cs" />
+    <Compile Include="Migrations\201906111708265_Fact.Designer.cs">
+      <DependentUpon>201906111708265_Fact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906111722551_Fac.cs" />
+    <Compile Include="Migrations\201906111722551_Fac.Designer.cs">
+      <DependentUpon>201906111722551_Fac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906111730498_Fack.cs" />
+    <Compile Include="Migrations\201906111730498_Fack.Designer.cs">
+      <DependentUpon>201906111730498_Fack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906111732041_Fack1.cs" />
+    <Compile Include="Migrations\201906111732041_Fack1.Designer.cs">
+      <DependentUpon>201906111732041_Fack1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906111732230_Fa.cs" />
+    <Compile Include="Migrations\201906111732230_Fa.Designer.cs">
+      <DependentUpon>201906111732230_Fa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AddOrdenViewModel.cs" />
     <Compile Include="Models\AddPrestViewModel.cs" />
@@ -394,6 +414,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905281657423_Fecha.resx">
       <DependentUpon>201905281657423_Fecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906111708265_Fact.resx">
+      <DependentUpon>201906111708265_Fact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906111722551_Fac.resx">
+      <DependentUpon>201906111722551_Fac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906111730498_Fack.resx">
+      <DependentUpon>201906111730498_Fack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906111732041_Fack1.resx">
+      <DependentUpon>201906111732041_Fack1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906111732230_Fa.resx">
+      <DependentUpon>201906111732230_Fa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

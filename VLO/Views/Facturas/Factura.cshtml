@@ -79,7 +79,7 @@
                 <tr>
                     <td class="Cantidad">@item.cantidad</td>
                     <td class="Descripcion2"> @item.Menu.Nombre</td>
-                    <td class="Precio1">@item.Menu.Precio</td>
+                    <td class="Precio1">$@item.Menu.Precio</td>
                     <td class="Vns"></td>
                     <td class="Vex"></td>
                     <td class="Venta">@((item.cantidad * @item.Menu.Precio).ToString("C"))</td>
@@ -175,11 +175,11 @@
 </body>
 </html>
 
-@*<script>
+<script>
                 window.print();
                 setInterval(function () {
                     window.location.href = '@Url.Action("Index", "Ordenes")';
                 }, 5000);
 
-    </script>*@
+    </script>
 
