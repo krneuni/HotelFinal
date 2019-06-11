@@ -32,6 +32,41 @@
                                 <p>Cantidad: @item2.cantidad</p>
                                 <a class="btn btn-danger btn-rounded" href="/Ordenes/TerminarOrdenCocina?iddetalle=@item2.IdDetalle">Terminar</a>
                             }
+                            if (item2.Menu.TipoMenu.Nombre.ToString() != "Bebidas")
+                            {
+
+                                <p>Menu: @Menu.Nombre</p>
+                                <p>Termino: @item2.Termino</p>
+                                <p>Condiciones Especiales: @item2.Comentarios</p>
+                                <p>Cantidad: @item2.cantidad</p>
+                                <p>
+                                    <strong>Estado: </strong>
+                                    @if (item2.Estado == 1)
+                                    {
+                                        <span class="badge badge-danger">
+                                            En Cocina
+                                        </span>
+                                    }
+                                    else if (item2.Estado == 2)
+                                    {
+                                        <span class="badge badge-success">
+                                            Terminado
+                                        </span>
+                                    }
+                                    else if (item2.Estado == 3)
+                                    {
+                                        <span class="badge badge-warning">
+                                            Esperando pago
+                                        </span>
+                                    }
+                                    else if (item2.Estado == 4)
+                                    {
+                                        <span class="badge badge-dark">
+                                            Pagado
+                                        </span>
+                                    }
+                                </p>
+                            }
                         }
                     </div>
                 </div>

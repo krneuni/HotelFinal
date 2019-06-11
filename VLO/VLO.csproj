@@ -126,6 +126,7 @@
     <Content Include="Content\css\normalize.css" />
     <Content Include="Content\css\sweetalert2.css" />
     <Content Include="Content\estilos.css" />
+    <Content Include="Content\fact.css" />
     <Content Include="Content\fondo.jpg" />
     <Content Include="Content\icon.png" />
     <Content Include="Content\Logo.png" />

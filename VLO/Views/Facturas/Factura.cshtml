@@ -8,158 +8,178 @@
 }
 
 
+<!DOCTYPE html>
 
-<style>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link href="~/Content/fact.css" rel="stylesheet" />
+</head>
+@*<style>
 
 
-    * {
-        -webkit-print-color-adjust: exact;
-    }
-</style>
+        * {
+            -webkit-print-color-adjust: exact;
+        }
+    </style>*@
 <body>
-
-    <table>
-        <tr>
-            <td>
-                <img src="~/Content/Logo.png" alt="Logo" style="background-color:black;padding:10px;width:400px" />
-            </td>
-            <td>
-                <div style="text-align:center;border:1px solid #000; border-radius:10px;padding:10px;margin:10px;height:100px;width:150px">
-                    <h2 style="margin-top:0px;margin-bottom:0px">Factura</h2>
-                    <p style="margin-top:0px;font-size:10px;">168M000F</p>
-                    <h2 style="color:red;margin-top: 10px;margin-bottom:10px">N° 0000</h2>
-                    <p style="margin-top:0px;font-size:10px;margin-bottom:0">N.R.C 233085-5</p>
-                    <p style="margin-top:0px;font-size:10px;">NIT. 1206-281164-101-5</p>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align:center">
-                <h3 style="margin-bottom:0px">DAVID AMILCAR ROMERO RODRÍGUEZ</h3>
-                <h4 style="margin-top:0">HOTEL Y RESTAURANTE</h4>
-                <p style="margin-bottom:0px">Calle a Conchaguita, Salida al Majague</p>
-                <p style="margin-bottom:0px;margin-top:0px">Playa Las Flores, Chirilagua, San Miguel</p>
-                @*<p style="margin-bottom:0px;margin-top:0px">Telefono: XXXX-XXXX</p>*@
-            </td>
-            <td>
-                <p style="margin-bottom:0px;margin-top:0px;font-size:12px;">Autorización de Imprenta N° 782 D.G.I.I</p>
-                <p style="margin-bottom:0px;margin-top:0px;font-size:12px;">Fecha de Autorización 23/07/1999</p>
-                @*<p> Fecha: @System.DateTime.Now.Day - @System.DateTime.Now.Month - @System.DateTime.Now.Year</p>*@
-
-                @foreach (var item in Model.pedidos)
-                {
-                    <div>
-                        @{ var Adet = Model.factura.Where(x => x.IdPedido == item.IdPedido).ToList();}
-                        @foreach (var item2 in Adet)
-                        {
-                            <p>Fecha: @item2.FechaFactura</p>
-
-                        }
+    <div class="Contenedor">
+        <div class="Encabezado">
+            <div class="image">
+                @*<img src="~/Content/Logo.png" alt="Logo" style="background-color:black;padding:10px;width:400px" />*@
+            </div>
+        </div>
+        <table style="border:none;">
+            <tr>
+                <td></td>
+                <td>
+                    <div style="text-align:left;border:none; border-radius:10px;padding:10px;margin:10px;height:100px;width:150px">
 
                     </div>
-                }
-            </td>
-        </tr>
-    </table>
-    <table style="border:1px solid #000;border-radius:10px">
-        <tr>
-            <td>
-                @foreach (var item in Model.pedidos)
-                {
-                    <p>Cliente:@item.Cliente</p>
-                }
-                <p>Direccion:_________________________________________________________________________</p>
-                <p>NIT/DUI:________________________________Vta. a Cuenta de:__________________________</p>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="10">
-    </table>
-    <table>
-        <tr style="font-size:15px;background:none;color:#FFF">
-            <td>CANT.</td>
-            <td style="width:30%">DESCRIPCION</td>
-            <td>PRECIO UNITARIO</td>
-            <td>VENTAS NO SUJETAS</td>
-            <td>VENTAS EXTERNAS</td>
-            <td>VENTAS GRABADAS</td>
-        </tr>
-        @foreach (var item in Model.detalle)
-        {
-            <tr>
-                <td>@item.cantidad</td>
-                <td>@item.Menu.Nombre</td>
-                <td>@item.Menu.Precio</td>
-                <td>$0.00</td>
-                <td>$0.00</td>
-                <td>@((item.cantidad * @item.Menu.Precio).ToString("C"))</td>
-                @{
-                    total += (item.cantidad * @item.Menu.Precio);
-                }
+                </td>
             </tr>
-
-        }
-    </table>
-    <tr>
-        <td colspan="100">
-            <table style="width:100%">
-                <tr>
-                    <td></td>
-                    <td></td>
-
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Llenar si la Operacion es igual o mayor a $200</p>
-                        <table>
-                            <tr>
-                                <td>RECIBIDO POR</td>
-                                <td>ENTREGADO POR</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Nombre:</p>
-                                    <p>D.U.I:</p>
-                                    <p>FIRMAS:</p>
-                                </td>
-                                <td>
-                                    <p>Nombre:</p>
-                                    <p>D.U.I:</p>
-                                    <p>FIRMAS:</p>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
+            <tr>
+                <td>
                     @foreach (var item in Model.pedidos)
                     {
+                        <div>
+                            @{ var Adet = Model.factura.Where(x => x.IdPedido == item.IdPedido).ToList();}
+                            @foreach (var item2 in Adet)
+                            {
+                                <p class="Fecha">@item2.FechaFactura</p>
 
-                        <td colspan="2">
-                            <p>(-) IVA Retenido</p>
-                            <p>Sub-Total: @total.ToString("C")</p>
-                            <p>10% PROPINA: @item.Factura.FirstOrDefault().Propina</p>
+                            }
 
-                            @*<p>Total: @item.Factura.FirstOrDefault().Total</p>
-                                <p>Descuento (-): @item.Descuento</p>*@
-                            <p>Ventas no Sujetas</p>
-                            <p>Ventas Extensas</p>
-                            <p>Venta Total @item.Factura.FirstOrDefault().TotalNeto</p>
-                        </td>
-                        <td colspan="2"></td>
+                        </div>
+                    }
+                </td>
+            </tr>
+        </table>
+
+        <table class="DatosCliente">
+            <tr>
+                <td colspan="2" class="Nombre">
+                    @foreach (var item in Model.pedidos)
+                    {
+                        @item.Cliente
+                    }
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="10">
+        </table>
+
+        <div class="Clista">
+            <table class="lista">
+                @foreach (var item in Model.detalle)
+                {
+                <tr>
+                    <td class="Cantidad">@item.cantidad</td>
+                    <td class="Descripcion2"> @item.Menu.Nombre</td>
+                    <td class="Precio1">@item.Menu.Precio</td>
+                    <td class="Vns"></td>
+                    <td class="Vex"></td>
+                    <td class="Venta">@((item.cantidad * @item.Menu.Precio).ToString("C"))</td>
+                    @{
+                        total += (item.cantidad * @item.Menu.Precio);
                     }
                 </tr>
-            </table>
-        </td>
-    </tr>
-    
-</body>
 
-<script>
-            window.print();
-            setInterval(function () {
-                window.location.href = '@Url.Action("Index", "Ordenes")';
-            }, 5000);
-            
-</script>
+                }
+            </table>
+        </div>
+
+        @*<table class="Hdetalle" cellpadding="10">
+
+            @foreach (var item in Model.detalle)
+            {
+                <tr>
+                    <td colspan="1">@item.cantidad</td>
+                    <td colspan="3">@item.Menu.Nombre</td>
+                    <td colspan="2">@item.Menu.Precio</td>
+                    <td colspan="1">$0.00</td>
+                    <td colspan="1">$0.00</td>
+                    <td colspan="2">@((item.cantidad * @item.Menu.Precio).ToString("C"))</td>
+                    @{
+                        total += (item.cantidad * @item.Menu.Precio);
+                    }
+                </tr>
+
+            }
+        </table>*@
+
+        @*@foreach (var item in Model.pedidos)
+        {
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+                <td colspan="2">@total.ToString("C")
+                <td colspan="2">$@item.Factura.FirstOrDefault().Propina</td>
+
+                @*<p>Total: @item.Factura.FirstOrDefault().Total</p>
+                <p>Descuento (-): @item.Descuento</p>*@
+        @*<td></td>
+                <td></td>
+                <td>$@item.Factura.FirstOrDefault().TotalNeto</td>
+            </tr>
+        }*@
+        <table class="PieFactura">
+            @foreach (var item in Model.pedidos)
+            {
+                <tr>
+                    <td class="letras" rowspan="2"></td>
+                    <td class="Suma"></td>
+                    <td class="SumaCantidad"></td>
+                    <td class="TotalSumas"></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"></td>
+                    <td style="border:none;">@total.ToString("C")</td>
+                </tr>
+                <tr>
+                    <td class="IVA" colspan="2">.</td>
+                    <td style="border:none;"></td>
+                </tr>
+                <tr>
+                    <td> </td>
+                    <td colspan="2"></td>
+                    <td style="border:none;">$@item.Factura.FirstOrDefault().Total</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="2"> </td>
+                    <td style="border:none;">$@item.Factura.FirstOrDefault().Propina</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="2"></td>
+                    <td style="border:none;">$0.00</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="2"></td>
+                    <td style="border:none;">$0.00</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="2"></td>
+                    <td style="border:none;">$@item.Factura.FirstOrDefault().TotalNeto</td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
+
+@*<script>
+                window.print();
+                setInterval(function () {
+                    window.location.href = '@Url.Action("Index", "Ordenes")';
+                }, 5000);
+
+    </script>*@
 

@@ -1372,7 +1372,6 @@ C:\krn\HotelFinal-master (1)\HotelFinal-master\VLO\obj\Debug\VLO.csproj.CoreComp
 C:\krn\HotelFinal-master (1)\HotelFinal-master\VLO\obj\Debug\VLO.csproj.CopyComplete
 C:\krn\HotelFinal-master (1)\HotelFinal-master\VLO\obj\Debug\VLO.dll
 C:\krn\HotelFinal-master (1)\HotelFinal-master\VLO\obj\Debug\VLO.pdb
-C:\krn\HotelFinal\VLO\obj\Debug\VLO.csproj.CoreCompileInputs.cache
 C:\krn\HotelFinal\VLO\bin\VLO.dll.config
 C:\krn\HotelFinal\VLO\bin\VLO.dll
 C:\krn\HotelFinal\VLO\bin\VLO.pdb
@@ -1451,10 +1450,11 @@ C:\krn\HotelFinal\VLO\bin\System.Web.Webpages.Razor.xml
 C:\krn\HotelFinal\VLO\bin\System.Web.Helpers.xml
 C:\krn\HotelFinal\VLO\bin\System.Web.Mvc.xml
 C:\krn\HotelFinal\VLO\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\krn\HotelFinal\VLO\obj\Debug\VLO.csprojAssemblyReference.cache
+C:\krn\HotelFinal\VLO\obj\Debug\VLO.Migrations.InitialCreate.resources
+C:\krn\HotelFinal\VLO\obj\Debug\VLO.Migrations.Fecha.resources
+C:\krn\HotelFinal\VLO\obj\Debug\VLO.csproj.GenerateResource.cache
+C:\krn\HotelFinal\VLO\obj\Debug\VLO.csproj.CoreCompileInputs.cache
 C:\krn\HotelFinal\VLO\obj\Debug\VLO.csproj.CopyComplete
 C:\krn\HotelFinal\VLO\obj\Debug\VLO.dll
 C:\krn\HotelFinal\VLO\obj\Debug\VLO.pdb
-C:\krn\HotelFinal\VLO\obj\Debug\VLO.Migrations.InitialCreate.resources
-C:\krn\HotelFinal\VLO\obj\Debug\VLO.csproj.GenerateResource.cache
-C:\krn\HotelFinal\VLO\obj\Debug\VLO.Migrations.Fecha.resources
-C:\krn\HotelFinal\VLO\obj\Debug\VLO.csprojAssemblyReference.cache

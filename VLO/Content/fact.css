@@ -1,0 +1,164 @@
+﻿* {
+    font-family: 'Arial';
+}
+
+.Contenedor {
+    height: 21.5cm;
+    height: 14cm;
+    /*margin:0.7cm 0.5cm 0.2cm 0.5cm;*/
+    padding: 0.5cm 1.6cm 0 1.5cm;
+    /*background-color:burlywood;
+    background-image: url(../images/crf.jpg);
+    background-size:cover;*/
+}
+
+.Encabezado {
+    height: 3cm;
+    width: 100%;}
+
+img {
+    width: 200px;
+}
+
+.DatosCliente {
+    width: 100%;
+    height: 2cm;
+    font-size: 14px;
+    margin-left: 6px;
+}
+
+.Hdetalle {
+    width: 700px;
+    border: none;
+    font-size: 18px;
+}
+
+.Detalle {
+    width: 100%;
+    padding: 0;
+    border-spacing: 1px 0;
+    font-size: 14px;
+}
+
+.Clista {
+    width: 100%;
+    height: 8cm;
+    padding: 0;
+    border-spacing: 0 0;
+}
+
+.lista {
+    width: 100%;
+    font-size: 18px;
+}
+
+.CantidadH {
+    width: 1.7cm;
+}
+
+.Cantidad {
+    text-align: center;
+    border: none;
+    border-collapse: collapse;
+    width: 1.7cm;
+}
+
+.Descripcion {
+    width: 12cm;
+}
+
+.Descripcion2 {
+    border: none;
+    border-collapse: collapse;
+    width: 12cm;
+}
+
+.PrecioH {
+    width: 1.8cm;
+}
+
+.Precio1 {
+    border: none;
+    border-collapse: collapse;
+    width: 1.3cm;
+}
+
+.Precio2 {
+    width: 0.5cm;
+    border: none;
+    border-collapse: collapse;
+}
+
+.VnsH {
+    width: 1.2cm;
+}
+
+.Vns {
+    width: 1.2cm;
+    border: none;
+    border-collapse: collapse;
+}
+
+.VeH {
+    width: 1.2cm;
+}
+
+.Vex {
+    width: 1.2cm;
+    border: none;
+    border-collapse: collapse;
+}
+
+.VentaH {
+    width: 2.7cm;
+}
+
+.Venta {
+    width: 0.6cm;
+    border: none;
+    border-collapse: collapse;
+}
+
+.Nombre {
+    font-size:18px;
+    padding: 0.5cm 1.6cm 0 1.5cm;
+}
+
+.Fecha {
+    padding: 0.5cm 1.6cm 0 10cm;
+}
+td {
+    /*border: 1px solid;*/
+    padding: 0;
+    border-spacing: 0 0;
+}
+/*DETALLES del PIE de FACTURA*/
+.PieFactura {
+    width: 100%;
+    padding: 0;
+    border-spacing: 0 0;
+    font-size: 18px;
+}
+
+.letras {
+    width: 530px;
+    border: none;
+    border-collapse: collapse;
+}
+
+.Suma {
+    width: 49px;
+    border-collapse: collapse;
+}
+
+.SumaCantidad {
+    width: 109px;
+    border: none;
+    border-collapse: collapse;
+    border-radius: 0px 0px 0px 8px;
+}
+
+.TotalSumas {
+    border: none;
+    border-collapse: collapse;
+}
