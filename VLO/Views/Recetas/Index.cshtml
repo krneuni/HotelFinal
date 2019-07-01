@@ -5,14 +5,17 @@
 
                 ViewBag.Title = "Index";
 }
-
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<link href="~/Scripts/datatables.min.css" rel="stylesheet" />
+<script src="~/Scripts/datatables.min.js"></script>
+<link href="~/Content/estilos.css" rel="stylesheet" />
 <h2>Recetas</h2>
 
 
 <p>
     <a href="@Url.Action("Create","Recetas")" class="btn btn-success"> <i class="glyphicon glyphicon-plus"></i> Nuevo</a>
 </p>
-<form action="@Url.Action("Index","Recetas")" method="post">
+@*<form action="@Url.Action("Index","Recetas")" method="post">
     <div class="form-group">
         <div class="row col-md-12">
             <div class="col-md-6">
@@ -23,11 +26,12 @@
             </div>
         </div>
     </div>
-</form>
+</form>*@
 <br />
 <br />
 <div class="row col-md-12 table-responsive" style="margin-top:10px">
-    <table class="table table-bordered" style="background-color:#FFF">
+    <table id="dtTable" class="table table-bordered" style="background-color:#FFF">
+      <thead>
         <tr style="background-color:#E6E6E6">
             <th>
                 @Html.DisplayNameFor(model => model.Menu.Nombre)
@@ -40,7 +44,8 @@
             </th>
             <th></th>
         </tr>
-
+      </thead>
+      <tbody>
         @foreach (var item in Model)
         {
             <tr>
@@ -60,6 +65,7 @@
                 </td>
             </tr>
         }
-
+      </tbody>
     </table>
 </div>
+ <script src="~/Scripts/TableIdioma.js"></script>
